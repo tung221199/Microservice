@@ -1,7 +1,6 @@
-package com.example.productservice.controller;
+package com.example.productservice.web.controller;
 
-import com.example.productservice.dto.ProductRequest;
-import com.example.productservice.dto.response.ProductResponse;
+import com.example.productservice.model.entity.Product;
 import com.example.productservice.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,13 +17,13 @@ public class ProductController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createProduct(@RequestBody ProductRequest productRequest){
-        productService.createProduct(productRequest);
+    public void createProduct(@RequestBody Product product){
+        productService.createProduct(product);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<ProductResponse> getAllProducts(){
-        productService.getAllProducts();
+    public List<Product> getAllProducts(){
+        return productService.getAllProducts();
     }
 }
